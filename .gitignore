@@ -91,3 +91,5 @@ ENV/
 # idea settings
 .idea/
 
+# local database
+db.sqlite3
