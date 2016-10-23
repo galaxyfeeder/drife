@@ -1,10 +1,260 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!DOCTYPE HTML>
+{% load static %}
+<!--
+	Miniport by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Miniport by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{% static 'css/landing/main.css' %}" />
+	</head>
+	<body>
 
-</body>
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="container">
+					<li><a href="#top">Home</a></li>
+					<li><a href="#work">About us</a></li>
+					<li><a href="#portfolio">Team</a></li>
+					<li><a href="#contact">Contact</a></li>
+					<li><a href="{% url 'ums:login' %}">Platform</a></li>
+				</ul>
+				
+			</nav>
+
+		<!-- Home -->
+			<div class="wrapper style1 first">
+				<article class="container" id="top">
+					<div class="row">
+						<div class="4u 12u(mobile)">
+							<span class="image fit"><img src="{% static "images/logodrife.jpg" %}" alt="" /></span>
+						</div>
+						<div class="8u 12u(mobile)">
+							<header>
+								<h1><strong>Drife</strong></h1>
+							</header>
+							<p>An IoT service for improving your driving quality</p>
+							<a href="#work" class="button big scrolly">Learn about what we do</a>
+						</div>
+					</div>
+				</article>
+			</div>
+
+		<!-- Work -->
+			<div class="wrapper style2">
+				<article id="work">
+					<header>
+						<h2>Here's all the stuff we do.</h2>
+						<p>We fight for a secure and comfortable driving using IoT</p>
+					</header>
+					<div class="container">
+						<div class="row">
+						     <div class="4u 12u(mobile)">
+								<section class="box style1">
+									<span class="icon featured fa-area-chart"></span>
+									<h3>Data processing</h3>
+									<p>In order to live in a better tomorrow, we precisely analize all the data exctract from our accurate sensors</p>
+								</section>
+							</div>
+							<div class="4u 12u(mobile)">
+								<section class="box style1">
+									<span class="icon featured fa-glass"></span>
+									<h3>Alcohol level control</h3>
+									<p>You could only drive if you are below the stablished alcohol level. Because your wholeness is the most important</p>
+								</section>
+							</div>
+							<div class="4u 12u(mobile)">
+								<section class="box style1">
+									<span class="icon featured fa-key"></span>
+									<h3>Authentification</h3>
+									<p>For your wellness you could easily get into the vehicle and allow the entrance for the selected ones</p>
+								</section>
+							</div>
+							<div class="4u 12u(mobile)">
+								<section class="box style1">
+									<span class="icon featured fa-bed"></span>
+									<h3>Fall sleep avoidance</h3>
+									<p>With our sophisticated algorithm we will never allow that you asleep while driving </p>
+								</section>
+							</div>
+							<div class="4u 12u(mobile)">
+								<section class="box style1">
+									<span class="icon featured fa-map-marker"></span>
+									<h3>Live location</h3>
+									<p>Using our advanced GPS location you will always know where is your car</p>
+								</section>
+							</div>
+							<div class="4u 12u(mobile)">
+								<section class="box style1">
+									<span class="icon featured fa-plus-circle"></span>
+									<h3>And much more...</h3>
+									<p>Test our device to see all the feature that will make drive a new experience</p>
+								</section>
+							</div>
+						</div>
+					</div>
+					<footer>
+						<p>Not convinced yet?</p>
+						<a href="#portfolio" class="button big scrolly">Know our team</a>
+					</footer>
+				</article>
+			</div>
+
+		<!-- Portfolio -->
+			<div class="wrapper style3">
+				<article id="portfolio">
+					<header>
+						<h2>Dream Team</h2>
+					</header>
+					<div class="container">
+						<div class="row">
+							<div class="4u 12u(mobile)">
+								<article class="box style2">
+                                    <a class="image featured"><img src="{% static "images/Adrian.jpeg" %}" alt="" /></a>
+									<h3><a href="#">Adrian Marruedo</a></h3>
+									<p><b>Data analyst</b></p>
+									<p>Multitasking and easygoing</p>
+								</article>
+							</div>
+							<div class="4u 12u(mobile)">
+								<article class="box style2">
+									<a class="image featured"><img src="{% static "images/David.png" %}" alt="" /></a>
+									<h3><a href="#">David Riudor</a></h3>
+									<p><b>Bussines developer</b></p>
+									<p>Enterpreuner and picky</p>
+								</article>
+							</div>
+							<div class="4u 12u(mobile)">
+								<article class="box style2">
+									<a class="image featured"><img src="{% static "images/guille.jpg" %}" alt="" /></a>
+									<h3><a href="#">Guillem Heinrich</a></h3>
+									<p><b>Telecom Engineer</b></p>
+									<p>Dreamer and sharp</p>
+								</article>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u 12u(mobile)">
+								<article class="box style2">
+									<a class="image featured"><img src="{% static "images/Gabriel.jpeg" %}" alt="" /></a>
+									<h3><a href="#">Gabriel Esteban</a></h3>
+									<p><b>IT Developer</b></p>
+									<p>Resolutive and experienced</p>
+								</article>
+							</div>
+							<div class="4u 12u(mobile)">
+								<article class="box style2">
+									<a class="image featured"><img src="{% static "images/tamborero.jpg" %}" alt="" /></a>
+									<h3><a href="#">Arnau Tamborero</a></h3>
+									<p><b>Maker</b></p>
+									<p>Creative and essential</p>
+								</article>
+							</div>
+							<div class="4u 12u(mobile)">
+								<article class="box style2">
+									<a class="image featured"><img src="{% static "images/plaza.jpg" %}" alt="" /></a>
+									<h3><a href="#">Daniel Plaza</a></h3>
+									<p><b>Arduino Senior</b></p>
+									<p>Effective and talented</p>
+								</article>
+							</div>
+						</div>
+					</div>
+					<footer>
+						<p>Would you like to know more?</p>
+						<a href="#contact" class="button big scrolly">Get in touch with us</a>
+					</footer>
+				</article>
+			</div>
+
+		<!-- Contact -->
+			<div class="wrapper style4">
+				<article id="contact" class="container 75%">
+					<header>
+						<h2>Improving</h2>
+						<p>Feel free to contact us if you have any doubts or suggestions.</p>
+					</header>
+					<div>
+						<div class="row">
+							<div class="12u">
+								<form method="post" action="#">
+									<div>
+										<div class="row">
+											<div class="6u 12u(mobile)">
+												<input type="text" name="name" id="name" placeholder="Name" />
+											</div>
+											<div class="6u 12u(mobile)">
+												<input type="text" name="email" id="email" placeholder="Email" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+												<input type="text" name="subject" id="subject" placeholder="Subject" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+												<textarea name="message" id="message" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="row 200%">
+											<div class="12u">
+												<ul class="actions">
+													<li><input type="submit" value="Send Message" /></li>
+													<li><input type="reset" value="Clear Form" class="alt" /></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<hr />
+								<h3>Find me on ...</h3>
+								<ul class="social">
+									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="#" class="icon fa-tumblr"><span class="label">Tumblr</span></a></li>
+									<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+									<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+									<!--
+									<li><a href="#" class="icon fa-rss"><span>RSS</span></a></li>
+									<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
+									<li><a href="#" class="icon fa-foursquare"><span>Foursquare</span></a></li>
+									<li><a href="#" class="icon fa-skype"><span>Skype</span></a></li>
+									<li><a href="#" class="icon fa-soundcloud"><span>Soundcloud</span></a></li>
+									<li><a href="#" class="icon fa-youtube"><span>YouTube</span></a></li>
+									<li><a href="#" class="icon fa-blogger"><span>Blogger</span></a></li>
+									<li><a href="#" class="icon fa-flickr"><span>Flickr</span></a></li>
+									<li><a href="#" class="icon fa-vimeo"><span>Vimeo</span></a></li>
+									-->
+								</ul>
+								<hr />
+							</div>
+						</div>
+					</div>
+					<footer>
+						<ul id="copyright">
+							<li>Copyright &copy; 2016 Drife. All rights reserved.</li><li>Design: HTML5UP</li>
+						</ul>
+					</footer>
+				</article>
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+			<script src="{% static "js/landing/jquery.scrolly.min.js" %}"></script>
+			<script src="{% static "js/landing/skel.min.js" %}"></script>
+			<script src="{% static "js/landing/skel-viewport.min.js" %}"></script>
+			<script src="{% static "js/landing/util.js" %}"></script>
+			<script src="{% static "js/landing/main.js" %}"></script>
+	</body>
 </html>

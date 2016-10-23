@@ -4,4 +4,13 @@
 {% block description %}{% endblock description %}
 
 {% block content %}
+    {% for access in cars %}
+        <div class="col-md-12">
+            <div class="widget widget-shadow">
+                <div class="widget-content">
+                    {{ access.car.name }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock content %}
