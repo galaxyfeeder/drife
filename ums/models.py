@@ -12,6 +12,9 @@ class Driver(models.Model):
     genre = models.IntegerField(choices=GENRE_CHOICES)
     birthday = models.DateField()
 
+    def __unicode__(self):
+        return self.user.__unicode__()
+
 
 class DriverIdentification(models.Model):
     driver = models.ForeignKey(Driver)

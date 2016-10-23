@@ -5,10 +5,26 @@
 
 {% block content %}
     {% for access in cars %}
-        <div class="col-md-12">
+        <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="widget widget-shadow">
-                <div class="widget-content">
-                    {{ access.car.name }}
+                <div class="widget-content car-block" style="padding: 15px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>{{ access.car.license_plate }}</h3>
+                        </div>
+                        <div class="col-md-12">
+                            <p>{{ access.car.group }}</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p>Start time: {{ access.start_time }}</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p>End time: {{ access.end_time | default_if_none:"Indefinite" }}</p>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <a href="" class="btn btn-default">Use this car!</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
