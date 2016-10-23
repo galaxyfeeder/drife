@@ -32,36 +32,43 @@
         <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
             <!-- Navbar Toolbar -->
             <ul class="nav navbar-toolbar">
-                <li class="hidden-float">
-                    <a class="icon md-home" href="#" role="button">
-                        <span class="sr-only">Home</span>
+                <li>
+                    <a href="{% url 'platform:home' %}" role="button">
+                        <div class="icon md-home"></div>
+                        Home
                     </a>
                 </li>
             </ul>
             <!-- End Navbar Toolbar -->
             <!-- Navbar Toolbar Right -->
             <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
-                <li class="dropdown">
-                    <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
-                       data-animation="scale-up" role="button">
-                        <span class="avatar avatar-online">
-                        <img src="{% static "images/logo-blue.png" %}" alt="...">
-                        <i></i>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem"><i class="icon md-account" aria-hidden="true"></i> Profile</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem"><i class="icon md-settings" aria-hidden="true"></i> Settings</a>
-                        </li>
-                        <li class="divider" role="presentation"></li>
-                        <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem"><i class="icon md-power" aria-hidden="true"></i> Logout</a>
-                        </li>
-                    </ul>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="dropdown">
+                        <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                           data-animation="scale-up" role="button">
+                            <span class="avatar avatar-online">
+                            <img src="{% static "images/logo-blue.png" %}" alt="...">
+                            <i></i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a href="{% url 'ums:driver_detail' %}" role="menuitem"><i class="icon md-account" aria-hidden="true"></i> Profile</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="javascript:void(0)" role="menuitem"><i class="icon md-settings" aria-hidden="true"></i> Settings</a>
+                            </li>
+                            <li class="divider" role="presentation"></li>
+                            <li role="presentation">
+                                <a href="{% url 'ums:logout' %}" role="menuitem"><i class="icon md-power" aria-hidden="true"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="">
+                        <a href="{% url 'ums:login' %}">Login</a>
+                    </li>
+                {% endif %}
             </ul>
             <!-- End Navbar Toolbar Right -->
         </div>
