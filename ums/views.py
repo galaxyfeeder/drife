@@ -24,8 +24,7 @@ class LoginView(TemplateView):
             login(request, user)
             return redirect("platform:home")
         else:
-            # Return an 'invalid login' error message.
-            return
+            return self.render_to_response({'error': "Invalid auth."})
 
 
 @login_required
