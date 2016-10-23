@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from ums.models import Driver, NFCIdentification, BLEIdentificaiton
+
+admin.site.register(Driver)
+admin.site.register(NFCIdentification)
+admin.site.register(BLEIdentificaiton)

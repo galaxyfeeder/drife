@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from car.models import Group, Car, CarAccess
+
+admin.site.register(Group)
+admin.site.register(Car)
+admin.site.register(CarAccess)
