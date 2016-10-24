@@ -4,42 +4,78 @@
 {% block description %}{% endblock description %}
 
 {% block content %}
-    <h1>Your cars</h1>
-    {% for access in cars %}
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="widget widget-shadow">
-                <div class="widget-content car-block" style="padding: 15px">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>{{ access.car.license_plate }}</h3>
-                        </div>
-                        <div class="col-md-12">
-                            <p>Group: {{ access.car.group }}</p>
-                        </div>
-                        <div class="col-md-12">
-                            <p>Start time: {{ access.start_time }}</p>
-                        </div>
-                        <div class="col-md-12">
-                            <p>End time: {{ access.end_time | default_if_none:"Indefinite" }}</p>
-                        </div>
-                        {% if access.car.active_driver %}
+    <div class="row" data-plugin="matchHeight" data-by-row="true">
+        <h1>Your cars</h1>
+        {% for access in cars %}
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="widget widget-shadow">
+                    <div class="widget-content car-block" style="padding: 15px">
+                        <div class="row">
                             <div class="col-md-12">
-                                <p>Active driver: {{ access.car.active_driver }}</p>
+                                <h3>{{ access.car.license_plate }}</h3>
                             </div>
-                        {% endif %}
-                        <div class="col-md-12 text-center">
-                            <a href="{% url 'car:edit' pk=access.car.pk %}" class="btn btn-default">Edit car details</a>
-                        </div>
-                        <div class="col-md-12 text-center" style="padding: 15px">
-                            {% if access.car.active_driver != user.driver %}
-                                <a href="{% url 'car:use_car' pk=access.car.pk %}" class="btn btn-default">Use this car!</a>
-                            {% else %}
-                                <a class="btn btn-success" disabled>You're already using this car</a>
+                            <div class="col-md-12">
+                                <p>Group: {{ access.car.group }}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <p>Start time: {{ access.start_time }}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <p>End time: {{ access.end_time | default_if_none:"Indefinite" }}</p>
+                            </div>
+                            {% if access.car.active_driver %}
+                                <div class="col-md-12">
+                                    <p>Active driver: {{ access.car.active_driver }}</p>
+                                </div>
                             {% endif %}
+                            <div class="col-md-12 text-center">
+                                <a href="{% url 'car:edit' pk=access.car.pk %}" class="btn btn-default">Edit car details</a>
+                            </div>
+                            <div class="col-md-12 text-center" style="padding: 15px">
+                                {% if access.car.active_driver != user.driver %}
+                                    <a href="{% url 'car:use_car' pk=access.car.pk %}" class="btn btn-default">Use this car!</a>
+                                {% else %}
+                                    <a class="btn btn-success" disabled>You're already using this car</a>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+    <div class="row" data-plugin="matchHeight" data-by-row="true">
+        <h1>Your monitorized cars</h1>
+        {% for group in groups %}
+            <div class="col-md-12">
+                <h3>{{ group.name }}</h3>
+                <div class="row">
+                    {% for car in group.car_set.all %}
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="widget widget-shadow">
+                                <div class="widget-content car-block" style="padding: 15px">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3>{{ car.license_plate }}</h3>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p>Group: {{ car.group }}</p>
+                                        </div>
+                                        {% if car.active_driver %}
+                                            <div class="col-md-12">
+                                                <p>Active driver: {{ car.active_driver }}</p>
+                                            </div>
+                                        {% endif %}
+                                        <div class="col-md-12 text-center">
+                                            <a href="{% url 'car:edit' pk=car.pk %}" class="btn btn-default">Edit car details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

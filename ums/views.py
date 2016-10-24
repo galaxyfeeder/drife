@@ -36,9 +36,15 @@ class LoginView(TemplateView):
         else:
             return self.render_to_response({'error': "Invalid auth."})
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return redirect("platform:home")
+        else:
+            return super(LoginView, self).dispatch(request, *args, **kwargs)
+
 
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect('platform:home')
+    return redirect('landing:landing')
 

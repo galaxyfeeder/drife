@@ -12,6 +12,14 @@ class Group(models.Model):
         return self.name
 
 
+class DriverGroup(models.Model):
+    group = models.ForeignKey(Group)
+    driver = models.ForeignKey(Driver)
+
+    class Meta:
+        unique_together = (('group', 'driver'),)
+
+
 class Car(models.Model):
     license_plate = models.CharField(max_length=50, unique=True)
     group = models.ForeignKey(Group)

@@ -74,8 +74,8 @@
 <!-- Page -->
 <div class="page">
     <div class="page-content container-fluid">
-        <div class="row" data-plugin="matchHeight" data-by-row="true">
-            {% block content %}
+        {% block content %}
+            <div class="row" data-plugin="matchHeight" data-by-row="true">
                 <div class="col-md-12">
                     <div class="widget widget-shadow">
                         <div class="widget-content">
@@ -83,8 +83,8 @@
                         </div>
                     </div>
                 </div>
-            {% endblock content %}
-        </div>
+            </div>
+        {% endblock content %}
     </div>
 </div>
 <!-- End Page -->
