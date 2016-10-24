@@ -31,19 +31,23 @@
                 <div class="widget-content" style="padding: 20px">
                     <div class="row">
                         <div class="col-md-12">
-                            <table>
-                                <tr>
-                                    <th>Driver</th>
-                                    <th>Start time</th>
-                                    <th>End time</th>
-                                </tr>
-                                {% for usage in last_usages %}
+                            <table class="table">
+                                <theader>
                                     <tr>
-                                        <td>{{ usage.driver }}</td>
-                                        <td>{{ usage.start_time }}</td>
-                                        <td>{{ usage.end_time }}</td>
+                                        <th>Driver</th>
+                                        <th>Start time</th>
+                                        <th>End time</th>
                                     </tr>
-                                {% endfor %}
+                                </theader>
+                                <tbody>
+                                    {% for usage in last_usages %}
+                                        <tr>
+                                            <td>{{ usage.driver }}</td>
+                                            <td>{{ usage.start_time }}</td>
+                                            <td>{{ usage.end_time|default_if_none:"Not finished" }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
                             </table>
                         </div>
                     </div>
