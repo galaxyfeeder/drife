@@ -11,6 +11,10 @@ class Driver(models.Model):
     driver_id = models.CharField(max_length=30)
     genre = models.IntegerField(choices=GENRE_CHOICES)
     birthday = models.DateField()
+    alcoholemic_tax = models.FloatField()
+
+    def __unicode__(self):
+        return self.user.__unicode__()
 
 
 class DriverIdentification(models.Model):

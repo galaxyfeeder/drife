@@ -4,13 +4,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic import DetailView, UpdateView, TemplateView
 
+from ums.models import Driver
+
 
 class DriverDetail(LoginRequiredMixin, DetailView):
     template_name = "ums/driver_detail.html"
+    model = Driver
+
+    def get_object(self, queryset=None):
+        return self.request.user.driver
 
 
 class DriverUpdate(LoginRequiredMixin, UpdateView):
     template_name = "ums/driver_form.html"
+    model = Driver
+
+    def get_object(self, queryset=None):
+        return self.request.user.driver
 
 
 class LoginView(TemplateView):
@@ -26,9 +36,15 @@ class LoginView(TemplateView):
         else:
             return self.render_to_response({'error': "Invalid auth."})
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return redirect("platform:home")
+        else:
+            return super(LoginView, self).dispatch(request, *args, **kwargs)
+
 
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect('platform:home')
+    return redirect('landing:landing')
 
