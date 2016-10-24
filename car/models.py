@@ -43,3 +43,10 @@ class CarAccess(models.Model):
 
     def __unicode__(self):
         return self.driver.__unicode__() + " for " + self.car.__unicode__()
+
+
+class CarUsage(models.Model):
+    car = models.ForeignKey(Car)
+    driver = models.ForeignKey(Driver)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField(blank=True, null=True)
