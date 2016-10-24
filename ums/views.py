@@ -4,13 +4,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic import DetailView, UpdateView, TemplateView
 
+from ums.models import Driver
+
 
 class DriverDetail(LoginRequiredMixin, DetailView):
     template_name = "ums/driver_detail.html"
+    model = Driver
+
+    def get_object(self, queryset=None):
+        return self.request.user.driver
 
 
 class DriverUpdate(LoginRequiredMixin, UpdateView):
     template_name = "ums/driver_form.html"
+    model = Driver
+
+    def get_object(self, queryset=None):
+        return self.request.user.driver
 
 
 class LoginView(TemplateView):
