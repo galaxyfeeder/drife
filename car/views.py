@@ -31,3 +31,13 @@ def get_driver_data(request):
                                                          'alcoholemic_tax': car.active_driver.alcoholemic_tax}})
     else:
         return JsonResponse({'success': False})
+
+
+def finish_using_car(request):
+    car = Car.objects.filter(license_plate=request.GET.get('license_plate', None)).first()
+    if car and car.active_driver:
+        car.active_driver = None
+        car.save()
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False})
