@@ -19,6 +19,9 @@ class DriverGroup(models.Model):
     class Meta:
         unique_together = (('group', 'driver'),)
 
+    def __unicode__(self):
+        return self.group.__unicode__() + " " + self.driver.__unicode__()
+
 
 class Car(models.Model):
     license_plate = models.CharField(max_length=50, unique=True)
