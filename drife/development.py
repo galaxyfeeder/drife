@@ -11,3 +11,4 @@ DATABASES = {
 }
 
 WSGI_APPLICATION = 'drife.wsgi.application'
+DEBUG = True
