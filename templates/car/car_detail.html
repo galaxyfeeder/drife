@@ -1,10 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}Car detail{% endblock title %}
+{% block description %}{% endblock description %}
+
+{% block content %}
+    <div class="row" data-plugin="matchHeight" data-by-row="true">
+        <div class="col-md-4">
+            <div class="widget widget-shadow">
+                <div class="widget-content" style="padding: 20px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Car details</h3>
+                        </div>
+                        <div class="col-md-12">
+                            <p>License plate: {{ object.license_plate }}</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p>Group: {{ object.group }}</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p>Active driver: {{ object.active_driver }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="widget widget-shadow">
+                <div class="widget-content" style="padding: 20px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table>
+                                <tr>
+                                    <th>Driver</th>
+                                    <th>Start time</th>
+                                    <th>End time</th>
+                                </tr>
+                                {% for usage in last_usages %}
+                                    <tr>
+                                        <td>{{ usage.driver }}</td>
+                                        <td>{{ usage.start_time }}</td>
+                                        <td>{{ usage.end_time }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="widget widget-shadow">
+                <div class="widget-content" style="padding: 20px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="height-300" id="map"></div>
+                            <script src="https://maps.googleapis.com/maps/api/js"></script>
+                            <script src="{% static "vendor/gmaps/gmaps.js" %}"></script>
+                            <script>
+                                (function() {
+                                    var map = new GMaps({
+                                        div: '#map',
+                                        lat: 41.3513973,
+                                        lng: 2.1352049
+                                        });
+                                    map.addMarker({
+                                        lat: 41.3513973,
+                                        lng: 2.1352049,
+                                        title: 'Last position'});
+                                })();
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

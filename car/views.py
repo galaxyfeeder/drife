@@ -1,14 +1,20 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import redirect
+from django.utils import timezone
 from django.views.generic import DetailView, UpdateView
 
-from car.models import Car
+from car.models import Car, CarUsage
 
 
 class CarDetail(LoginRequiredMixin, DetailView):
     template_name = "car/car_detail.html"
     model = Car
+
+    def get_context_data(self, **kwargs):
+        context = super(CarDetail, self).get_context_data(**kwargs)
+
+        return context
 
 
 class CarUpdate(LoginRequiredMixin, UpdateView):
@@ -17,10 +23,13 @@ class CarUpdate(LoginRequiredMixin, UpdateView):
 
 
 def use_car(request, pk):
-    Car.objects.filter(active_driver=request.user.driver).update(active_driver=None)
-    car = Car.objects.get(pk=pk)
-    car.active_driver = request.user.driver
-    car.save()
+    active_usages = CarUsage.objects.filter(end_time=None, driver=request.user.driver)
+    if not active_usages:
+        Car.objects.filter(active_driver=request.user.driver).update(active_driver=None)
+        car = Car.objects.get(pk=pk)
+        car.active_driver = request.user.driver
+        car.save()
+        CarUsage.objects.create(driver=request.user.driver, start_time=timezone.now(), car=car)
     return redirect("platform:home")
 
 
@@ -38,6 +47,7 @@ def finish_using_car(request):
     if car and car.active_driver:
         car.active_driver = None
         car.save()
+        CarUsage.objects.filter(end_time=None, driver=request.user.driver).update(end_time=timezone.now())
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False})
