@@ -13,7 +13,7 @@ class Group(models.Model):
 
 
 class Car(models.Model):
-    license_plate = models.CharField(max_length=50)
+    license_plate = models.CharField(max_length=50, unique=True)
     group = models.ForeignKey(Group)
     active_driver = models.ForeignKey(Driver, blank=True, null=True)
 
