@@ -13,3 +13,4 @@ DATABASES = {
 
 WSGI_APPLICATION = 'drife.wsgi_production.application'
 DEBUG = False
+ALLOWED_HOSTS = ['*']
