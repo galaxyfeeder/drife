@@ -44,38 +44,40 @@
             </div>
         {% endfor %}
     </div>
-    <div class="row" data-plugin="matchHeight" data-by-row="true">
-        <h1>Your monitorized cars</h1>
-        {% for group in groups %}
-            <div class="col-md-12">
-                <h3>{{ group.name }}</h3>
-                <div class="row">
-                    {% for car in group.car_set.all %}
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="widget widget-shadow">
-                                <div class="widget-content car-block" style="padding: 15px">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h3>{{ car.license_plate }}</h3>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <p>Group: {{ car.group }}</p>
-                                        </div>
-                                        {% if car.active_driver %}
+    {% if groups %}
+        <div class="row" data-plugin="matchHeight" data-by-row="true">
+            <h1>Your monitorized cars</h1>
+            {% for group in groups %}
+                <div class="col-md-12">
+                    <h3>{{ group.name }}</h3>
+                    <div class="row">
+                        {% for car in group.car_set.all %}
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="widget widget-shadow">
+                                    <div class="widget-content car-block" style="padding: 15px">
+                                        <div class="row">
                                             <div class="col-md-12">
-                                                <p>Active driver: {{ car.active_driver }}</p>
+                                                <h3>{{ car.license_plate }}</h3>
                                             </div>
-                                        {% endif %}
-                                        <div class="col-md-12 text-center">
-                                            <a href="{% url 'car:edit' pk=car.pk %}" class="btn btn-default">Edit car details</a>
+                                            <div class="col-md-12">
+                                                <p>Group: {{ car.group }}</p>
+                                            </div>
+                                            {% if car.active_driver %}
+                                                <div class="col-md-12">
+                                                    <p>Active driver: {{ car.active_driver }}</p>
+                                                </div>
+                                            {% endif %}
+                                            <div class="col-md-12 text-center">
+                                                <a href="{% url 'car:edit' pk=car.pk %}" class="btn btn-default">Edit car details</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock content %}
