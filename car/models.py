@@ -50,3 +50,6 @@ class CarUsage(models.Model):
     driver = models.ForeignKey(Driver)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.car.__unicode__() + " " + self.driver.__unicode__()
